@@ -29,7 +29,9 @@ public class MainClass {
 		log.debug("hello world!");
 		log.debug("hello world!");
 		log.debug("hello world!");
-		HttpUtil.get("http://www.baidu.com", new HttpParamers() {
+		String url="http://yun.baidu.com/pcloud/friend/getfollowlist?query_uk=4180462582&limit=24&start=0&bdstoken=2b6350dafcdc296bbb4237a9ffccb27d&channel=chunlei&clienttype=0&web=1";
+//		String url="http://www.baidu.com";
+		HttpUtil.get(url, new HttpParamers() {
 			@Override
 			public void onRespone(String content) {
 				// TODO Auto-generated method stub
