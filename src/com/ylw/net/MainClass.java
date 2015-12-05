@@ -3,6 +3,7 @@ package com.ylw.net;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 
+import com.ylw.net.utils.cache.CacheUtil;
 import com.ylw.net.utils.http.HttpParamers;
 import com.ylw.net.utils.http.HttpUtil;
 
@@ -45,5 +46,8 @@ public class MainClass {
 		log.debug("hello world!");
 		log.debug("hello world!");
 		log.debug("hello world!");
+
+		CacheUtil.initCache();
+		CacheUtil.put("sdf", "dddddddddddddddddddddddddddd");
 	}
 }
