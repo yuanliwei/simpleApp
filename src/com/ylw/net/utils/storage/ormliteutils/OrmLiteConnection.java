@@ -6,12 +6,15 @@ import org.apache.commons.logging.LogFactory;
 
 import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
+import com.ylw.net.utils.PropUtils;
 
 public class OrmLiteConnection {
 	private static org.apache.commons.logging.Log log = LogFactory
 			.getLog(OrmLiteConnection.class);
-	
-	private final static String DATABASE_URL = "jdbc:sqlite:E:/java/gen_logs/testmaven.db";
+
+	// private final static String DATABASE_URL =
+	// "jdbc:sqlite:E:/java/gen_logs/testmaven.db";
+	private final static String DATABASE_URL = PropUtils.get("db_path");
 
 	private static ConnectionSource connectionSource;
 
