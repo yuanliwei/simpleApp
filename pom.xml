@@ -120,5 +120,15 @@
 			<artifactId>ormlite-core</artifactId>
 			<version>4.48</version>
 		</dependency>
+		<dependency>
+			<groupId>com.belerweb</groupId>
+			<artifactId>pinyin4j</artifactId>
+			<version>2.5.0</version>
+		</dependency>
+		<dependency>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>2.9.1</version>
+		</dependency>
 	</dependencies>
 </project>
