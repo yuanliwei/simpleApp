@@ -36,7 +36,7 @@ public class HttpParamers {
 	public void initPostParams(Map<String, String> postParams) {
 	}
 
-	public void onRespone(String content) {
+	public void onRespone(String content) throws Exception {
 	}
 
 	protected void initSubClsHeaders(Map<String, String> headers) {

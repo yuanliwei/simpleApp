@@ -2,6 +2,8 @@ package com.ylw.net.utils.http;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -68,6 +70,8 @@ public class HttpUtil {
 		}
 	}
 
+	private static Pattern pattern = Pattern.compile("charset=[a-z|A-Z|0-9]*");
+
 	private static void responseHandler(HttpParamers paramers,
 			CloseableHttpResponse response) throws IOException,
 			UnsupportedEncodingException {
@@ -77,6 +81,14 @@ public class HttpUtil {
 				HttpEntity entity1 = response.getEntity();
 				byte[] buffer = EntityUtils.toByteArray(entity1);
 				String jsonContent = new String(buffer, "UTF-8");
+				String charSet = null;
+				Matcher m = pattern.matcher(jsonContent);
+				if (m.find()) {
+					charSet = m.group().replace("charset=", "");
+					if (!"utf-8".equalsIgnoreCase(charSet)) {
+						jsonContent = new String(buffer, charSet);
+					}
+				}
 				log.debug(jsonContent);
 				EntityUtils.consume(entity1);
 				paramers.onRespone(jsonContent);
@@ -84,12 +96,22 @@ public class HttpUtil {
 				HttpEntity entity1 = response.getEntity();
 				byte[] buffer = EntityUtils.toByteArray(entity1);
 				String jsonContent = new String(buffer, "UTF-8");
+				String charSet = null;
+				Matcher m = pattern.matcher(jsonContent);
+				if (m.find()) {
+					charSet = m.group().replace("charset=", "");
+					if (!"utf-8".equalsIgnoreCase(charSet)) {
+						jsonContent = new String(buffer, charSet);
+					}
+				}
 				log.debug(jsonContent);
 				EntityUtils.consume(entity1);
 				paramers.onRespone(response.getStatusLine().toString()
 						+ "\r\n\r\n" + jsonContent);
 			}
 
+		} catch (Exception e) {
+			log.error(e.getMessage(), e);
 		} finally {
 			response.close();
 		}
