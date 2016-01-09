@@ -18,13 +18,14 @@ public class HttpReq {
 
 	public void testHttpReq() {
 		// String url = "http://wap.cabnhina.com/index.asp";
-//		String url = "http://wap.cabnhina.com/login.asp?id=1";
-		String url = "http://wap.cabnhina.com/add_1.asp";
+		String url = "http://wap.cabnhina.com/login.asp?id=1";
+//		String url = "http://wap.cabnhina.com/add_1.asp";
 		HttpUtil.get(url, new HttpParamers() {
 			@Override
 			public void initHeaders(Map<String, String> headers) {
 				// TODO Auto-generated method stub
 				super.initHeaders(headers);
+				headers.put("Range", "bytes=360-18446744073709551615");
 			}
 
 			@Override
