@@ -34,7 +34,7 @@ public class SrtTimeAdjusting {
 		readAndwriteFile(src, dst, mills);
 	}
 
-	private void readAndwriteFile(String src, String dst, int millis)
+	private void readAndwriteFile(String src, String dst, int mills)
 			throws IOException, ParseException {
 		InputStream inputStream = new FileInputStream(src);
 		InputStreamReader inputStreamReader = new InputStreamReader(
@@ -69,7 +69,7 @@ public class SrtTimeAdjusting {
 		writer.close();
 	}
 
-	private String addTime(int millis, String time) {
+	private String addTime(int mills, String time) {
 		String[] times = time.split("[:,]");
 		log.debug(Arrays.toString(times));
 		int h = Integer.valueOf(times[0]);
@@ -82,7 +82,6 @@ public class SrtTimeAdjusting {
 		s = milli / 1000 % 60;
 		m = milli / 1000 / 60 % 60;
 		h = milli / 1000 / 60 / 60;
-
 		String result = String.format("%02d:%02d:%02d,%03d", h, m, s, S);
 		return result;
 	}
