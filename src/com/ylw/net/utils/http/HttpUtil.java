@@ -70,7 +70,7 @@ public class HttpUtil {
 		}
 	}
 
-	private static Pattern pattern = Pattern.compile("charset=[a-z|A-Z|0-9]*");
+	private static Pattern pattern = Pattern.compile("charset=[a-z|A-Z|0-9|-]*");
 
 	private static void responseHandler(HttpParamers paramers,
 			CloseableHttpResponse response) throws IOException,
